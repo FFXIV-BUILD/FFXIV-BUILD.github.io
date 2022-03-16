@@ -1,0 +1,16 @@
+{
+"companyName": "DefaultCompany",
+"productName": "FFXIV Homeketing",
+"productVersion": "0.1",
+"dataUrl": "FFXIV_Homeketing_Build.data.unityweb",
+"wasmCodeUrl": "FFXIV_Homeketing_Build.wasm.code.unityweb",
+"wasmFrameworkUrl": "FFXIV_Homeketing_Build.wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.4.0f1"
+}
