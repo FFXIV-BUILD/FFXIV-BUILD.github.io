@@ -4,11 +4,47 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-	<meta http-equiv="refresh" content="0; url=http://52.79.208.83/"></meta>
+	<title>집켓팅 도우미 - 내 집 마련의 꿈을 에오르제아에서!</title>
 	<link rel="icon" type="image/x-icon" href="/Resource/favicon.ico">
 	<link rel="favicon" href="/Resource/favicon.ico">
-	<title>집켓팅 도우미 - 내 집 마련의 꿈을 에오르제아에서!</title>
+	<script src="Build/UnityLoader.js"></script>
+	<script>
+		var gameInstance = UnityLoader.instantiate("gameContainer", "Build/FFXIV_Homeketing_Build.json");
+		var scaleToFit;
+		try {
+			scaleToFit = !!JSON.parse("true");
+		} catch (e) {
+			scaleToFit = true;
+		}
+
+		function onResize() {
+			var canvas = gameInstance.Module.canvas;
+			var container = gameInstance.container;
+			var w;
+			var h;
+
+			if (scaleToFit) {
+				w = window.innerWidth;
+				h = window.innerHeight;
+
+				var r = 720 / 1280;
+
+				if (w * r > window.innerHeight) {
+					w = Math.min(w, Math.ceil(h / r));
+				}
+				h = Math.floor(w * r);
+			} else {
+				w = 1280;
+				h = 720;
+			}
+
+			container.style.width = canvas.style.width = w + "px";
+			container.style.height = canvas.style.height = h + "px";
+			container.style.top = Math.floor((window.innerHeight - h) / 2) + "px";
+			container.style.left = Math.floor((window.innerWidth - w) / 2) + "px";
+		}
+		window.addEventListener('resize', onResize);
+	</script>
 	<style>
 		html,
 		body {
@@ -19,6 +55,27 @@
 			overflow: visible;
 			padding: 0;
 			margin: 0;
+		}
+
+		div#gameContainer {
+			background: transparent !important;
+			position: absolute;
+		}
+
+		div#gameContainer canvas {
+			position: absolute;
+		}
+
+		div#gameContainer[data-pixelated='true'] canvas {
+			image-rendering: optimizeSpeed;
+			image-rendering: -webkit-crisp-edges;
+			image-rendering: -moz-crisp-edges;
+			image-rendering: -o-crisp-edges;
+			image-rendering: crisp-edges;
+			image-rendering: -webkit-optimize-contrast;
+			image-rendering: optimize-contrast;
+			image-rendering: pixelated;
+			-ms-interpolation-mode: nearest-neighbor;
 		}
 	</style>
 </head>
